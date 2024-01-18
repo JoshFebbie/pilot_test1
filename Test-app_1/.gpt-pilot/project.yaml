@@ -1,0 +1,91 @@
+name: Test-app_1
+description: 'A tic-tac-toe application, Test-app_1, will be created using JavaScript, HTML, and CSS. The back end will feature
+  an authentication process where users can sign up or log in using their email or username/ID. MongoDB will be utilized as
+  the database to store user information, and upon successful login, players'' names will be displayed on-screen.
+
+
+  The application will support both single-player games against the computer and multiplayer games between users. A leaderboard
+  will be integrated to track player statistics. For security and user management, the authentication system will include
+  password recovery and email verification features.
+
+
+  Gameplay victories and ties will trigger pre-recorded audio responses, such as announcing the winner or declaring a tie.
+  The application will incorporate CORS to ensure cross-origin efficiency and responsiveness on various devices and screen
+  sizes.'
+user_stories: null
+architecture:
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+- Passport
+- Passport-local
+- bcrypt
+- jsonwebtoken
+- nodemailer
+- React
+- Redux
+- axios
+- HTML5
+- CSS3
+- Bootstrap
+- Socket.io
+- cors
+- howler.js
+development_plan:
+- description: 'Initialize a Node.js project with Express and set up a basic server with a `/ping` route that responds with
+    `{status: ''ok''}` when queried.'
+  programmatic_goal: 'A successful GET request to `/ping` must return a JSON object with `{status: ''ok''}` and HTTP status
+    code 200.'
+  user_review_goal: 'Verify that when accessing `/ping` route in a browser or through a tool like Postman, the response received
+    is a JSON object with `{status: ''ok''}`.'
+- description: Create MongoDB connection using Mongoose and design a User schema to handle user information including username,
+    email, and password.
+  programmatic_goal: Upon application startup, MongoDB successfully connects, and a User schema model allows creation and
+    retrieval of user documents.
+  user_review_goal: Review of the database directly should show the User schema with appropriate fields.
+- description: Implement user authentication APIs for sign-up and login using Passport and Passport-local, which encrypts
+    passwords using bcrypt.
+  programmatic_goal: Users should be able to sign up and log in with a username and password via POST requests to `/auth/signup`
+    and `/auth/login` respectively, with appropriate response messages and status codes.
+  user_review_goal: Verify that new users can register and existing users can log in with correct credentials and receive
+    proper response messages.
+- description: Develop email verification and password recovery features using nodemailer, jsonwebtoken, and additional MongoDB
+    schema fields as necessary.
+  programmatic_goal: Signing up triggers an email with a verification link, and a POST request to `/auth/recover` sends an
+    email with a password reset link. Both must be verifiable via provided tokens.
+  user_review_goal: Ensure email verification works upon new user signup and that the password recovery process correctly
+    allows resetting the password.
+- description: Set up React application with Redux for state management and implement the base layout using HTML5 and Bootstrap,
+    adding responsive design considerations.
+  programmatic_goal: A running React app displays a responsive and visually coherent page at the root path `/` with Bootstrap
+    styling.
+  user_review_goal: Opening the web app on different devices and screen sizes shows a responsive layout with no visual inconsistencies.
+- description: Build front-end components for single-player tic-tac-toe game mechanics and integrate game state management
+    with Redux.
+  programmatic_goal: Players should be able to play a game of tic-tac-toe against the computer on the front end with state
+    changes properly managed by Redux.
+  user_review_goal: User can engage in a single-player tic-tac-toe game against the computer, with gameplay functioning correctly
+    and state managed accurately.
+- description: Implement the multiplayer gameplay functionality using Socket.io for real-time communication between clients
+    and the server.
+  programmatic_goal: Two clients can connect to the server and play a tic-tac-toe game against each other in real-time with
+    consistent state updates.
+  user_review_goal: Two users can play a multiplayer game of tic-tac-toe with each other in real-time, with actions by one
+    player instantly reflected on the other player's screen.
+- description: Create a leaderboard system that records user statistics such as wins, losses, and ties, and use MongoDB to
+    persist this data.
+  programmatic_goal: After each game, the player statistics are updated in the database and can be queried and displayed on
+    the leaderboard.
+  user_review_goal: Following game completion, verify that the player's statistics (wins, losses, ties) are updated and correctly
+    displayed in a leaderboard format.
+- description: Integrate pre-recorded audio responses using howler.js for in-game events such as victories and ties.
+  programmatic_goal: Audio responses are played at appropriate in-game events; for example, a victory sound plays when a player
+    wins, and a tie sound plays when the game is a draw.
+  user_review_goal: Verify that the right audio sounds are played during the corresponding game events, like winning or drawing
+    a game.
+- description: Ensure the backend is set up to handle CORS using the `cors` npm package to allow for secure cross-origin requests.
+  programmatic_goal: The Express server is configured with CORS middleware to properly handle cross-origin requests from different
+    domains.
+  user_review_goal: Confirm through front-end client tests and server logs that cross-origin requests are successfully completed
+    without CORS errors.

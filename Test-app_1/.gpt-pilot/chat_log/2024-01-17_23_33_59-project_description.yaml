@@ -1,0 +1,76 @@
+endpoint: OPENAI
+model: gpt-4-1106-preview
+messages:
+- role: system
+  content: You are an experienced project owner (project manager) who manages the entire process of creating software applications
+    for clients from the client specifications to the development. You act as if you are talking to the client who wants his
+    idea about a software application created by you and your team. You always think step by step and ask detailed questions
+    to completely understand what does the client want and then, you give those specifications to the development team who
+    creates the code for the app. Any instruction you get that is labeled as **IMPORTANT**, you follow strictly.
+- role: system
+  content: '**IMPORTANT**
+
+    Here are the instructions for Writing the Summary:
+
+
+    1. **Stick to the Facts**: Every sentence should be informative and relevant. Length is not an issue as long as all pertinent
+    details are included, without unnecessary anecdotes, background stories, or subjective interpretations.
+
+
+    2. **Avoid Subjectivity and Mentioning The Client or Any External Entities**: Do not mention phrases like "the client
+    wants" or "the client said". Do not provide personal opinions, interpretations, or unnecessary background stories. Summarize
+    information in a direct and neutral manner.
+
+
+    3. **Use Active Voice**: Use active rather than passive voice. For instance, "The project includes 5 subdomains" instead
+    of "It was decided that the project should include 5 subdomains."
+
+
+    4. **Be Direct**: Replace indirect phrases with direct statements. For example, instead of saying "The client said there
+    might be a need for...", state "There will be...".
+
+
+    5. **Prioritize Clarity**: Each statement should be clear and easy to understand. Refrain from using jargon unless it''s
+    widely recognized in the project''s context.
+
+
+    6. **Organize Information**: Group related items to ensure a coherent flow in your summary, making it more understandable
+    for readers.
+
+
+    **Examples**:
+
+    - Instead of "The client expressed a preference for blue in our last meeting", write "The primary color is blue".
+
+    - Instead of "We''ve chosen to build on WordPress after reviewing potential platforms", write "The project will be built
+    on WordPress".
+
+
+    Remember: The goal of the summary is to provide a concise and accurate overview, focusing strictly on its factual aspects.'
+- role: user
+  content: "Based on the following conversation, write a summary:\n\n``` user: I want you to create the App (let's call it\
+    \ \"Test-app_1\") that can be described like this:\n```\nA simple tic-tac-toe app using javascript, html, and CSS. For\
+    \ the back end, I would like to use an authentification process to allow users to sign in and play against a computer.\
+    \ If they do not have an account, they will be promted to do so, either based on their email or username/ID. After a successfull\
+    \ register/login, the players name will be displayed, with the assistants of mongodb as a databse. This game will alow\
+    \ certain victories to generate an audio response, such as \"Player one wins\". Or \"Tie\" in the event that neither player\
+    \ wins.  \n```\nassistant: Should the app support multiplayer games between users or only against the computer?\nuser:\
+    \ Both options would be ideal\nassistant: Does the app require a leaderboard or any form of player statistics tracking?\n\
+    user: If possible, yes\nassistant: Should the authentication system offer password recovery and email verification functionality?\n\
+    user: yes\nassistant: Will the audio responses for game outcomes be generated dynamically (text-to-speech) or will they\
+    \ be pre-recorded audio files?\nuser: they will be pre-recorded audio files\nassistant: Is there a requirement for the\
+    \ app to be responsive and work across various devices and screen sizes?\nuser: A technology such as \"Cors\" should be\
+    \ implemented for cross-platform performance. Preferably this is an app used for cross-origin efficiency ```"
+response: 'A tic-tac-toe application, Test-app_1, will be created using JavaScript, HTML, and CSS. The back end will feature
+  an authentication process where users can sign up or log in using their email or username/ID. MongoDB will be utilized as
+  the database to store user information, and upon successful login, players'' names will be displayed on-screen.
+
+
+  The application will support both single-player games against the computer and multiplayer games between users. A leaderboard
+  will be integrated to track player statistics. For security and user management, the authentication system will include
+  password recovery and email verification features.
+
+
+  Gameplay victories and ties will trigger pre-recorded audio responses, such as announcing the winner or declaring a tie.
+  The application will incorporate CORS to ensure cross-origin efficiency and responsiveness on various devices and screen
+  sizes.'

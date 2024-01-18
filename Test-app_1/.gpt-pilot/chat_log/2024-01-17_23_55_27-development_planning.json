@@ -1,0 +1,99 @@
+{
+  "endpoint": "OPENAI",
+  "model": "gpt-4-1106-preview",
+  "functions": [
+    {
+      "name": "implement_development_plan",
+      "description": "Implements the development plan.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "plan": {
+            "type": "array",
+            "description": "List of development tasks that need to be done to implement the entire plan.",
+            "items": {
+              "type": "object",
+              "description": "Development task that needs to be done to implement the entire plan.",
+              "properties": {
+                "description": {
+                  "type": "string",
+                  "description": "Description of the development task that needs to be done to implement the entire plan."
+                },
+                "programmatic_goal": {
+                  "type": "string",
+                  "description": "Detailed description of programmatic goal. Programmatic goal that will determine if a task can be marked as done from a programmatic perspective (this will result in an automated test that is run before the task is sent to you for a review). All details previously specified by user that are important for this task must be included in this programmatic goal."
+                },
+                "user_review_goal": {
+                  "type": "string",
+                  "description": "User review goal that will determine if a task is done or not, but from a user perspective since it will be reviewed by a human."
+                }
+              },
+              "required": [
+                "description",
+                "programmatic_goal",
+                "user_review_goal"
+              ]
+            }
+          }
+        },
+        "required": [
+          "plan"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "plan": [
+      {
+        "description": "Initialize a Node.js project with Express and set up a basic server with a `/ping` route that responds with `{status: 'ok'}` when queried.",
+        "programmatic_goal": "A successful GET request to `/ping` must return a JSON object with `{status: 'ok'}` and HTTP status code 200.",
+        "user_review_goal": "Verify that when accessing `/ping` route in a browser or through a tool like Postman, the response received is a JSON object with `{status: 'ok'}`."
+      },
+      {
+        "description": "Create MongoDB connection using Mongoose and design a User schema to handle user information including username, email, and password.",
+        "programmatic_goal": "Upon application startup, MongoDB successfully connects, and a User schema model allows creation and retrieval of user documents.",
+        "user_review_goal": "Review of the database directly should show the User schema with appropriate fields."
+      },
+      {
+        "description": "Implement user authentication APIs for sign-up and login using Passport and Passport-local, which encrypts passwords using bcrypt.",
+        "programmatic_goal": "Users should be able to sign up and log in with a username and password via POST requests to `/auth/signup` and `/auth/login` respectively, with appropriate response messages and status codes.",
+        "user_review_goal": "Verify that new users can register and existing users can log in with correct credentials and receive proper response messages."
+      },
+      {
+        "description": "Develop email verification and password recovery features using nodemailer, jsonwebtoken, and additional MongoDB schema fields as necessary.",
+        "programmatic_goal": "Signing up triggers an email with a verification link, and a POST request to `/auth/recover` sends an email with a password reset link. Both must be verifiable via provided tokens.",
+        "user_review_goal": "Ensure email verification works upon new user signup and that the password recovery process correctly allows resetting the password."
+      },
+      {
+        "description": "Set up React application with Redux for state management and implement the base layout using HTML5 and Bootstrap, adding responsive design considerations.",
+        "programmatic_goal": "A running React app displays a responsive and visually coherent page at the root path `/` with Bootstrap styling.",
+        "user_review_goal": "Opening the web app on different devices and screen sizes shows a responsive layout with no visual inconsistencies."
+      },
+      {
+        "description": "Build front-end components for single-player tic-tac-toe game mechanics and integrate game state management with Redux.",
+        "programmatic_goal": "Players should be able to play a game of tic-tac-toe against the computer on the front end with state changes properly managed by Redux.",
+        "user_review_goal": "User can engage in a single-player tic-tac-toe game against the computer, with gameplay functioning correctly and state managed accurately."
+      },
+      {
+        "description": "Implement the multiplayer gameplay functionality using Socket.io for real-time communication between clients and the server.",
+        "programmatic_goal": "Two clients can connect to the server and play a tic-tac-toe game against each other in real-time with consistent state updates.",
+        "user_review_goal": "Two users can play a multiplayer game of tic-tac-toe with each other in real-time, with actions by one player instantly reflected on the other player's screen."
+      },
+      {
+        "description": "Create a leaderboard system that records user statistics such as wins, losses, and ties, and use MongoDB to persist this data.",
+        "programmatic_goal": "After each game, the player statistics are updated in the database and can be queried and displayed on the leaderboard.",
+        "user_review_goal": "Following game completion, verify that the player's statistics (wins, losses, ties) are updated and correctly displayed in a leaderboard format."
+      },
+      {
+        "description": "Integrate pre-recorded audio responses using howler.js for in-game events such as victories and ties.",
+        "programmatic_goal": "Audio responses are played at appropriate in-game events; for example, a victory sound plays when a player wins, and a tie sound plays when the game is a draw.",
+        "user_review_goal": "Verify that the right audio sounds are played during the corresponding game events, like winning or drawing a game."
+      },
+      {
+        "description": "Ensure the backend is set up to handle CORS using the `cors` npm package to allow for secure cross-origin requests.",
+        "programmatic_goal": "The Express server is configured with CORS middleware to properly handle cross-origin requests from different domains.",
+        "user_review_goal": "Confirm through front-end client tests and server logs that cross-origin requests are successfully completed without CORS errors."
+      }
+    ]
+  }
+}
